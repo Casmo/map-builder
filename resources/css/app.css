@@ -1,0 +1,12 @@
+/* Reset */
+@import "tailwindcss/base";
+
+/* Components */
+@import "tailwindcss/components";
+
+/* Utilities */
+@import "tailwindcss/utilities";
+
+.gradient-deep-space {
+    background: linear-gradient(135deg, #5B38A6 0%, #241C59 100%);
+}
