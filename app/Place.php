@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class Town extends Model
+class Place extends Model
 {
     protected $guarded = [];
 
@@ -15,6 +15,14 @@ class Town extends Model
 
     public function scopeTowns(Builder $builder) {
         return $builder->where('national_level', '3rdOrder');
+    }
+
+    public function scopeCountries(Builder $builder) {
+        return $builder->where('national_level', '1stOrder');
+    }
+
+    public function scopeProvinces(Builder $builder) {
+        return $builder->where('national_level', '2ndOrder');
     }
 
     public function scopeFilter(Builder $builder, $options = []) {

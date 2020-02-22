@@ -2,7 +2,7 @@
   <div class="rounded overflow-hidden shadow-lg">
     <canvas :width="this.width" :height="this.height" class="h-48" ref="canvas" />
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{{town.name}}</div>
+      <div class="font-bold text-xl mb-2">{{place.name}}</div>
       <p class="text-gray-700 text-base">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
       </p>
@@ -21,7 +21,7 @@ import {sortBy, head, last, each} from 'lodash';
 
 export default {
   props: {
-      town: Object,
+      place: Object,
       width: {
         type: Number,
         default: 500
@@ -38,8 +38,8 @@ export default {
     const onePercentLatPixel = this.width / 100;
     const onePercentLonPixel = this.height / 100;
 
-    let sortLat = sortBy(this.town.borders_lq, ['lat']);
-    let sortLon = sortBy(this.town.borders_lq, ['lon']);
+    let sortLat = sortBy(this.place.borders_lq, ['lat']);
+    let sortLon = sortBy(this.place.borders_lq, ['lon']);
 
     let lowestLat = head(sortLat)['lat'];
     let lowestLon = head(sortLon)['lon'];
@@ -49,7 +49,7 @@ export default {
 
     ctx.beginPath();
 
-    each(this.town.borders_lq, (geo, index) => {
+    each(this.place.borders_lq, (geo, index) => {
 
 // I might have to rotate this
       let percentLat = ((geo.lat - lowestLat) * onePercentLat);

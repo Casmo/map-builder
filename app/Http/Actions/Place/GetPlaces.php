@@ -1,33 +1,32 @@
 <?php
-namespace App\Actions\Town;
+namespace App\Actions\Place;
 
-use App\Town;
+use App\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Response;
 use Inertia\Inertia;
 use Lorisleiva\Actions\Action;
 
-class GetTowns extends Action
+class GetPlaces extends Action
 {
     public function handle(Request $request)
     {
-        return Town::towns()
-            ->filter($request->only('search'))
+        return Place::filter($request->only('search', 'type'))
             ->limit(12)
             ->get();
     }
 
-    public function response(Collection $towns, Request $request) {
+    public function response(Collection $places, Request $request) {
 
         if ($request->expectsJson()) {
             return Response::json([
-                'towns' => $towns,
+                'places' => $places,
                 'filters' => $request
             ]);
         }
-        return Inertia::render('Towns/Index', [
-            'towns' => $towns,
+        return Inertia::render('Places/Index', [
+            'places' => $places,
             'filters' => $request
         ]);
 

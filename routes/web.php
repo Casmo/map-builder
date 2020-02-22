@@ -18,13 +18,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::get('/towns', '\App\Actions\Town\GetTowns')->name('towns.index');
-
-Route::get('/display', function() {
-    return view('nl', [
-        'towns' => App\Town::where('national_level', '3rdOrder')->get()
-    ]);
-});
+Route::get('/places', '\App\Actions\Place\GetPlaces')->name('places.index');
 
 Route::get('/test', function() {
     $service = new Sabre\Xml\Service();

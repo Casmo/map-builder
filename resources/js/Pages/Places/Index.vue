@@ -1,32 +1,33 @@
 <template>
   <div>
-    <h1 class="mb-8 font-bold text-3xl">Towns</h1>
+    <h1 class="mb-8 font-bold text-3xl">Places</h1>
       <input class="p-4 full-width block border" type="text" v-model="form.search" />
     <div class="grid grid-cols-4 gap-4">
-      <town v-for="town in towns" :key="town.id" :town="town" />
+      <place v-for="place in places" :key="place.id" :place="place" />
     </div>
   </div>
 </template>
 
 <script>
 import Layout from '@/Shared/Layout'
-import Town from '@/Pages/Towns/View';
+import Place from '@/Pages/Places/View';
 import {throttle, pickBy} from 'lodash';
 
 export default {
-  metaInfo: { title: 'Towns' },
+  metaInfo: { title: 'Places' },
   layout: Layout,
   components: {
-      Town
+      Place
   },
   props: {
-      towns: Array,
+      places: Array,
       filters: Object
   },
   data() {
     return {
       form: {
-        search: this.filters.search
+        search: this.filters.search,
+        type: 'towns'
       }
     }
   },
@@ -34,7 +35,7 @@ export default {
       form: {
           handler: throttle(function() {
               let query = pickBy(this.form);
-              this.$inertia.replace(this.route('towns.index', Object.keys(query).length ? query : { remember: 'forget' }));
+              this.$inertia.replace(this.route('places.index', Object.keys(query).length ? query : { remember: 'forget' }));
           }, 150),
           deep: true,
       },
