@@ -52,8 +52,8 @@ export default {
     each(this.town.borders_lq, (geo, index) => {
 
 // I might have to rotate this
-      let percentLat = 100 - ((geo.lat - lowestLat) * onePercentLat);
-      let percentLon = 100 - ((geo.lon - lowestLon) * onePercentLon);
+      let percentLat = ((geo.lat - lowestLat) * onePercentLat);
+      let percentLon = ((geo.lon - lowestLon) * onePercentLon);
 
       let x = onePercentLonPixel * percentLon;
       let y = this.height - (onePercentLatPixel * percentLat);

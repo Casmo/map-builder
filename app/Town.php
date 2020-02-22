@@ -19,7 +19,7 @@ class Town extends Model
 
     public function scopeFilter(Builder $builder, $options = []) {
         $builder->when($options['search'] ?? null, function ($builder, $search) {
-            return $builder->where('name', 'like', '%'+ $search +'%');
+            return $builder->where('name', 'like', '%'. $search .'%');
         });
         return $builder;
     }

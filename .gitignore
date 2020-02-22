@@ -1,8 +1,15 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css
+/public/js
+/public/svg
+/public/img
+/public/mix-manifest.json
 /storage/*.key
 /vendor
+.idea
+/.vscode
 .env
 .env.backup
 .phpunit.result.cache
@@ -10,3 +17,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.php_cs.cache
+.deploy
+.DS_Store

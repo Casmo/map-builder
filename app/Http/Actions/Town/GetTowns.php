@@ -22,11 +22,13 @@ class GetTowns extends Action
 
         if ($request->expectsJson()) {
             return Response::json([
-                'towns' => $towns
+                'towns' => $towns,
+                'filters' => $request
             ]);
         }
         return Inertia::render('Towns/Index', [
-            'towns' => $towns
+            'towns' => $towns,
+            'filters' => $request
         ]);
 
     }
